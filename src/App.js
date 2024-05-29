@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
+import NavMenu from './components/NavMenu';
 import Auth from './components/Auth';
 import BillboardManagement from './components/BillboardManagement';
 import CampaignScheduler from './components/CampaignScheduler';
@@ -15,6 +16,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
+        <NavMenu />
         <Routes>
           <Route path="/auth" element={<Auth />} />
           <Route path="/billboards" element={<BillboardManagement />} />

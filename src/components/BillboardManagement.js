@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Typography, List, ListItem, ListItemText, Paper, Box } from '@mui/material';
+import { Container, Typography, List, ListItem, ListItemText, Paper, Box, Button } from '@mui/material';
 
 const BillboardManagement = () => {
   const [billboards, setBillboards] = useState([]);
@@ -8,7 +8,7 @@ const BillboardManagement = () => {
   useEffect(() => {
     const fetchBillboards = async () => {
       try {
-        const res = await axios.get('/billboards');
+        const res = await axios.get('/api/billboards');
         setBillboards(res.data);
       } catch (err) {
         console.error(err);
@@ -26,11 +26,16 @@ const BillboardManagement = () => {
         <List sx={{ mt: 2 }}>
           {billboards.map((billboard) => (
             <ListItem key={billboard._id} sx={{ mb: 1 }}>
-              <ListItemText primary={billboard.location} />
+              <ListItemText primary={billboard.location} secondary={`ID: ${billboard._id}`} />
             </ListItem>
           ))}
         </List>
       </Paper>
+      <Box sx={{ mt: 2 }}>
+        <Button variant="contained" color="primary">
+          Add Billboard
+        </Button>
+      </Box>
     </Container>
   );
 };

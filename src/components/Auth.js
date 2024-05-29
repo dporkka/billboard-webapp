@@ -9,10 +9,12 @@ const Auth = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/auth/login', { email, password });
+      const res = await axios.post('/api/auth/login', { email, password });
       console.log(res.data);
+      // Handle login success (e.g., save token, redirect, etc.)
     } catch (err) {
       console.error(err);
+      // Handle login error
     }
   };
 
